@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.dao.PositionDAO">
+
+	<select id="findPosition"  resultType="Position">
+		SELECT 
+		    p.id,
+			p.name, 
+			p.lv,
+			p.createTime
+		FROM
+			position p	
+	</select>
+	<insert id="insertPosition" parameterType="Position">
+		INSERT IGNORE INTO
+		friend(name,lv,createTime)
+		VALUES(#{name},#{lv},#{createTime})
+	</insert>
+	<delete id="deletePositionById" parameterType="int">
+		delete from position where id=#{id}
+	</delete>
+</mapper>
+
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.dao.FriendDAO">
+
+	<select id="findResume"  resultType="Resume">
+		SELECT 
+		    r.id,
+			r.createTime, 
+			r.name,
+			r.selfIintroduction,
+			r.phone,
+			r.education,
+			r.major,
+			r.graduateInstitutions,
+			r.languageSkill,
+			r.location,
+			r.iDNumber,
+			r.gender,
+			r.birth,
+			r.nativeplace,
+			r.experience,
+			r.achievement
+		FROM
+			Resume r	
+	</select>
+	<insert id="insertResume" parameterType="Resume">
+		INSERT IGNORE INTO
+		Resume(createTime,name,selfIintroduction,phone,education,major,graduateInstitutions,languageSkill,location,iDNumber,gender,birth,nativeplace,experience,achievement)
+		VALUES(#{createTime},#{name},#{selfIintroduction},#{phone},#{education},#{major},#{graduateInstitutions},#{languageSkill},#{location},#{iDNumber},#{gender},#{birth},#{nativeplace},#{experience},#{achievement})
+	</insert>
+	<delete id="deleteResumeById" parameterType="int">
+		delete from Resume where id=#{id}
+	</delete>
+</mapper>
+
+
+
